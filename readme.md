@@ -7,7 +7,7 @@
 
 <br>
 
-We developed a application that will help us to manage our inventory, deposits and items. Feel free to register your account and start using our application.
+We developed an application that will help us to manage our inventory, deposits and items. Feel free to register your account and start using our application.
 Take your time to play around on the application's UI and API to get familiar with the system.
 
 For this test you will have to create a test automation project or manual tests cases, try to test as
@@ -32,3 +32,5 @@ Links:
 - Please generate a report of your tests results
 
   
+Report
+behave -f html -o behave-report.html

@@ -1,10 +1,12 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as ec
 
 
 class HomePage:
 
-    def __init__(self, driver):
+    def __init__(self, driver, wait):
         self.driver = driver
+        self.wait = wait
         self.deposits_menu = (By.LINK_TEXT, 'Deposits')
         self.items_menu = (By.LINK_TEXT, 'Items')
         self.inventories_menu = (By.LINK_TEXT, 'Inventory')
@@ -14,16 +16,16 @@ class HomePage:
 
 
     def click_deposits_menu(self):
-        self.driver.find_element(*self.deposits_menu).click()
+        self.wait.until(ec.element_to_be_clickable(self.deposits_menu)).click()
 
     def click_items_menu(self):
-        self.driver.find_element(*self.items_menu).click()
+        self.wait.until(ec.element_to_be_clickable(self.items_menu)).click()
 
     def click_inventories_menu(self):
-        self.driver.find_element(*self.inventories_menu).click()
+        self.wait.until(ec.element_to_be_clickable(self.inventories_menu)).click()
 
     def click_logout_button(self):
-        self.driver.find_element(*self.logout_button).click()
+        self.wait.until(ec.element_to_be_clickable(self.logout_button)).click()
 
     def welcome_message_text(self) -> str:
-        return self.driver.find_element(*self.welcome_message).text
+        return self.wait.until(ec.visibility_of_element_located(self.welcome_message)).text

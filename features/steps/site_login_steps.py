@@ -24,7 +24,7 @@ def step_impl(context):
     context.login_page.enter_password('123456')
 
 
-@when(u'clicks the login button')
+@when(u'clicks on the login button')
 def step_impl(context):
     context.login_page.click_submit_button()
 
