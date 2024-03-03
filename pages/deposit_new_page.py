@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 
 
-class NewDepositPage:
+class DepositNewPage:
 
     def __init__(self, driver, wait):
         self.driver = driver
