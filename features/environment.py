@@ -19,7 +19,7 @@ from pages.inventory_show_page import InventoryShowPage
 
 def before_scenario(context, scenario):
     options = webdriver.ChromeOptions()
-    options.add_argument("--start-maximized")
+    options.add_argument("--window-size=1920,1080")
     options.add_argument('--headless')
     context.driver = webdriver.Chrome(
         service=ChromeService(ChromeDriverManager().install()),
@@ -30,7 +30,7 @@ def before_scenario(context, scenario):
 
     context.site_url = 'https://test-bees.herokuapp.com/'
 
-    context.login_page = LoginPage(context.driver)
+    context.login_page = LoginPage(context.driver, context.wait)
     context.home_page = HomePage(context.driver, context.wait)
     context.deposits_page = DepositsPage(context.driver, context.wait)
     context.deposit_new_page = DepositNewPage(context.driver, context.wait)

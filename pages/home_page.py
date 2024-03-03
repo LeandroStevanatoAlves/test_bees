@@ -14,7 +14,6 @@ class HomePage:
         self.signed_in_message = (By.TAG_NAME, 'p')
         self.welcome_message = (By.TAG_NAME, 'h1')
 
-
     def click_deposits_menu(self):
         self.wait.until(ec.element_to_be_clickable(self.deposits_menu)).click()
 
