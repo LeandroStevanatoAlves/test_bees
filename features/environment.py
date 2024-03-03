@@ -1,3 +1,5 @@
+import os
+
 from behave import *
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -17,10 +19,20 @@ from pages.inventory_new_page import InventoryNewPage
 from pages.inventory_show_page import InventoryShowPage
 
 
+def is_on_github_actions():
+    if os.getenv("GITHUB_ACTIONS"):
+        return True
+    else:
+        return False
+
+
 def before_scenario(context, scenario):
     options = webdriver.ChromeOptions()
-    options.add_argument("--window-size=1920,1080")
-    options.add_argument('--headless')
+    if is_on_github_actions():
+        options.add_argument("--window-size=1920,1080")
+        options.add_argument('--headless')
+    else:
+        options.add_argument('--start-maximized')
     context.driver = webdriver.Chrome(
         service=ChromeService(ChromeDriverManager().install()),
         options=options
