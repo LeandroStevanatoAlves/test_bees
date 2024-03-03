@@ -1,4 +1,3 @@
-import time
 from behave import *
 from faker import Faker
 
@@ -10,13 +9,11 @@ def step_impl(context):
     context.login_page.enter_password('JKE9At9iQEHZ7at')
     context.login_page.click_submit_button()
     context.home_page.click_deposits_menu()
-    #time.sleep(2)
 
 
 @given(u'clicks on New Deposit')
 def step_impl(context):
     context.deposits_page.click_new_deposit_link()
-    #time.sleep(2)
 
 
 @given(u'fill all fields with valid information')
@@ -32,7 +29,6 @@ def step_impl(context):
 @when(u'clicks on create deposit button')
 def step_impl(context):
     context.deposit_new_page.click_create_deposit_button()
-    #time.sleep(2)
 
 
 @then(u'the user should see the "Deposit was successfully created." message')

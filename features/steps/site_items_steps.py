@@ -23,7 +23,6 @@ def step_impl(context):
     context.item_new_page.enter_height(str(randrange(1, 15)))
     context.item_new_page.enter_width(str(randrange(1, 15)))
     context.item_new_page.enter_weight(str(randrange(1, 15)))
-    #time.sleep(2)
 
 
 @when(u'clicks on Create Item button')
