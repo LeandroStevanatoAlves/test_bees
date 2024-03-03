@@ -10,7 +10,7 @@ class ItemShowPage:
         self.item_created_message = (By.XPATH, '/html/body/div/p')
         self.edit_item_link = (By.LINK_TEXT, 'Edit this item')
         self.back_to_items_link = (By.LINK_TEXT, 'Back to items')
-        self.destroy_item_button = (By.CSS_SELECTOR, "button[type='submit']")
+        self.destroy_item_button = (By.XPATH, '/html/body/div/div[2]/form/button')
 
     def item_created_message_text(self) -> str:
         return self.wait.until(ec.visibility_of_element_located(self.item_created_message)).text
