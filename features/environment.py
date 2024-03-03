@@ -26,7 +26,7 @@ def before_scenario(context, scenario):
         options=options
     )
 
-    context.wait = WebDriverWait(context.driver, 15)
+    context.wait = WebDriverWait(context.driver, 20)
 
     context.site_url = 'https://test-bees.herokuapp.com/'
 
