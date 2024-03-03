@@ -10,7 +10,7 @@ class DepositShowPage:
         self.deposit_created_message = (By.XPATH, '/html/body/div/p')
         self.edit_deposit_link = (By.LINK_TEXT, 'Edit this deposit')
         self.back_to_deposits_link = (By.LINK_TEXT, 'Back to deposits')
-        self.destroy_deposit_button = (By.CSS_SELECTOR, "button[type='submit']")
+        self.destroy_deposit_button = (By.XPATH, '/html/body/div/div[2]/form/button')
 
     def deposit_created_message_text(self) -> str:
         return self.wait.until(ec.visibility_of_element_located(self.deposit_created_message)).text
