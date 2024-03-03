@@ -1,6 +1,6 @@
 Feature: Deposits Page
 
-  Scenario: Login with valid user
+  Scenario: Create a new deposit
     Given the user is on the deposits page
     And clicks on New Deposit
     And fill all fields with valid information

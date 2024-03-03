@@ -22,21 +22,21 @@ def step_impl(context):
 @given(u'fill all fields with valid information')
 def step_impl(context):
     fake = Faker('pt_BR')
-    context.new_deposits_page.enter_name(fake.name())
-    context.new_deposits_page.enter_address(fake.street_address())
-    context.new_deposits_page.enter_city(fake.city())
-    context.new_deposits_page.enter_state(fake.estado_sigla())
-    context.new_deposits_page.enter_zipcode(fake.postcode())
+    context.deposit_new_page.enter_name(fake.name())
+    context.deposit_new_page.enter_address(fake.street_address())
+    context.deposit_new_page.enter_city(fake.city())
+    context.deposit_new_page.enter_state(fake.estado_sigla())
+    context.deposit_new_page.enter_zipcode(fake.postcode())
 
 
 @when(u'clicks on create deposit button')
 def step_impl(context):
-    context.new_deposits_page.click_create_deposit_button()
+    context.deposit_new_page.click_create_deposit_button()
     #time.sleep(2)
 
 
 @then(u'the user should see the "Deposit was successfully created." message')
 def step_impl(context):
-    assert context.show_deposit_page.deposit_created_message_text() == 'Deposit was successfully created.'
+    assert context.deposit_show_page.deposit_created_message_text() == 'Deposit was successfully created.'
     # Destroys the created deposit, to keep the database clean
-    context.show_deposit_page.click_destroy_deposit_button()
+    context.deposit_show_page.click_destroy_deposit_button()

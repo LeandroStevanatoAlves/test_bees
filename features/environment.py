@@ -9,6 +9,9 @@ from pages.home_page import HomePage
 from pages.deposits_page import DepositsPage
 from pages.deposit_new_page import DepositNewPage
 from pages.deposit_show_page import DepositShowPage
+from pages.items_page import ItemsPage
+from pages.item_new_page import ItemNewPage
+from pages.item_show_page import ItemShowPage
 
 
 def before_scenario(context, scenario):
@@ -23,8 +26,11 @@ def before_scenario(context, scenario):
     context.login_page = LoginPage(context.driver)
     context.home_page = HomePage(context.driver, context.wait)
     context.deposits_page = DepositsPage(context.driver, context.wait)
-    context.new_deposits_page = DepositNewPage(context.driver, context.wait)
-    context.show_deposit_page = DepositShowPage(context.driver, context.wait)
+    context.deposit_new_page = DepositNewPage(context.driver, context.wait)
+    context.deposit_show_page = DepositShowPage(context.driver, context.wait)
+    context.items_page = ItemsPage(context.driver, context.wait)
+    context.item_new_page = ItemNewPage(context.driver, context.wait)
+    context.item_show_page = ItemShowPage(context.driver, context.wait)
 
 
 def after_scenario(context, scenario):
