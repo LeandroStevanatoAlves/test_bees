@@ -1,39 +1,30 @@
 # Test Automation QA - BEES Marketplace
 
-### Fork this repo and follow the instructions bellow for the test 
-<BR>
+### About this Project
 
-### Business Rules
+This project automates test scenarios for the proposed challenge, there are some frontend and backend tests.
 
+The test automation project was created using Python, Cucumber, Requests, and Selenium webdriver. It follows the Page Object Model (POM) pattern for browser tests.
+<br>
 <br>
 
-We developed an application that will help us to manage our inventory, deposits and items. Feel free to register your account and start using our application.
-Take your time to play around on the application's UI and API to get familiar with the system.
-
-For this test you will have to create a test automation project or manual tests cases, try to test as
-many scenarios as possible.
-
-
+### Local Installation Guide
+1. Clone this project with git clone `https://github.com/LeandroStevanatoAlves/test_bees.git`
+2. Install **Python** and **Pip**
+3. Navigate to the project folder and install dependencies with `pip install -r requirements.txt`
+4. Run tests with `behave -f html -o behave-report.html`
+5. An HTML execution report named **behave-report.html** will be created in the project's root. If the report already exists, it will be overwritten.
 <br>
-Links:
+<br>
 
-* Applicattion link - https://test-bees.herokuapp.com
-* API Docs - https://test-bees.herokuapp.com/api-docs/index.html 
+### Continuous Integration
+The project has a configured pipeline in **GitHub Actions**. When runs in the pipeline, Chromedriver automatically switches to headless mode.
+<br>
+<br>
 
-<BR>
+### Observations
+The project ended up being quite extensive, so I didn't explore more test scenarios.
 
-### Technical Requirements for Automation
-- Test both UI and API 
-- Use page object pattern or relative patterns of your preference.
-- Use BDD for any scenario you want to do
-- You can choose any programming language, we recommend to you use Python 3.6+,  *BUT IT'S UP TO YOU*
-- Please follow code style for your choose language (example: PEP's for python).
-- Describe how to run your code in README.MD
-- Please generate a report of your tests results
+There is still plenty of room for code optimization, especially in API tests.
 
-  
-Report
-behave -f html -o behave-report.html
-
-Automação no Github Actions
-
+I aimed to follow best practices and kept the tests self-contained, creating and deleting all necessary data at the end of each test.
