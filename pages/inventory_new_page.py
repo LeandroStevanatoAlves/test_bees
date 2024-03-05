@@ -17,10 +17,6 @@ class InventoryNewPage:
 
     def select_option_item_id(self, text):
         Select(self.wait.until(ec.element_to_be_clickable(self.item_id_select))).select_by_visible_text(text)
-        #select_element = driver.find_element(By.NAME, 'selectomatic')
-        #select = Select(select_element)
-        #select.select_by_visible_text('Four')
-        # select.select_by_visible_text('Four')
 
     def select_option_deposit_id(self, text):
         Select(self.wait.until(ec.element_to_be_clickable(self.deposit_id_select))).select_by_visible_text(text)
