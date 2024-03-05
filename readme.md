@@ -4,7 +4,7 @@
 
 This project automates test scenarios for the proposed challenge, there are some frontend and backend tests.
 
-The test automation project was created using Python, Cucumber, Requests, and Selenium webdriver. It follows the Page Object Model (POM) pattern for browser tests.
+The test automation project was created using Python, Behave, Requests, and Selenium webdriver. It follows the Page Object Model (POM) pattern for browser tests.
 <br>
 <br>
 
