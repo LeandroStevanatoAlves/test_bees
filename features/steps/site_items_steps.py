@@ -1,5 +1,6 @@
 from random import randrange
 from behave import *
+from selenium.webdriver import ActionChains, Keys
 
 
 @given(u'the user is on the Items page')
@@ -13,6 +14,7 @@ def step_impl(context):
 
 @given(u'clicks on New Item')
 def step_impl(context):
+    ActionChains(context.driver).key_down(Keys.END).perform()
     context.items_page.click_new_item_link()
 
 

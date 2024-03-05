@@ -1,5 +1,6 @@
 from behave import *
 from faker import Faker
+from selenium.webdriver import ActionChains, Keys
 
 
 @given(u'the user is on the deposits page')
@@ -13,6 +14,7 @@ def step_impl(context):
 
 @given(u'clicks on New Deposit')
 def step_impl(context):
+    ActionChains(context.driver).key_down(Keys.END).perform()
     context.deposits_page.click_new_deposit_link()
 
 

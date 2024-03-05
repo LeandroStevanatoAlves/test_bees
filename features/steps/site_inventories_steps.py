@@ -2,6 +2,8 @@ from random import randrange
 
 import requests
 from behave import *
+from selenium.webdriver import ActionChains, Keys
+
 from utilities.api_deposits import deposits_payload_factory
 from utilities.api_items import items_payload_factory
 
@@ -33,6 +35,7 @@ def step_impl(context):
 
 @given(u'clicks on New Inventory')
 def step_impl(context):
+    ActionChains(context.driver).key_down(Keys.END).perform()
     context.inventories_page.click_new_inventory_link()
 
 
