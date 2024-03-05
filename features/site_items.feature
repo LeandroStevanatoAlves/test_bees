@@ -1,5 +1,6 @@
 Feature: Items Page
 
+  @selenium
   Scenario: Create a new item
     Given the user is on the Items page
     And clicks on New Item

@@ -34,3 +34,6 @@ Links:
   
 Report
 behave -f html -o behave-report.html
+
+Automação no Github Actions
+

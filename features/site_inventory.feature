@@ -1,5 +1,6 @@
 Feature: Inventories Page
 
+  @selenium
   Scenario: Create a new inventory
     Given the user is on the Inventories page
     And clicks on New Inventory

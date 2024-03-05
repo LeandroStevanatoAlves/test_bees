@@ -1,4 +1,3 @@
-import time
 from random import randrange
 from behave import *
 
