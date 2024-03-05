@@ -39,6 +39,9 @@ def step_impl(context):
     assert context.payload["state"] == response_data["state"]
     assert context.payload["zipcode"] == response_data["zipcode"]
 
+    # Delete the new deposit, to keep the database clean
+    requests.delete(context.site_url + 'deposits/' + str(response_data["id"]) + '.json')
+
 
 @given(u'there is an existing deposit')
 def step_impl(context):

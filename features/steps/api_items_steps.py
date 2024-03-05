@@ -33,6 +33,9 @@ def step_impl(context):
     assert context.payload["width"] + ".0" == response_data["width"]
     assert context.payload["weight"] + ".0" == response_data["weight"]
 
+    # Delete the new item, to keep the database clean
+    requests.delete(context.site_url + 'items/' + str(response_data["id"]) + '.json')
+
 
 @given(u'there is an existing item')
 def step_impl(context):

@@ -1,9 +1,7 @@
 import requests
 from behave import *
 from utilities.api_items import items_payload_factory
-from utilities.api_items import items_updated_payload_factory
 from utilities.api_deposits import deposits_payload_factory
-from utilities.api_deposits import deposits_updated_payload_factory
 from utilities.api_inventory import inventory_payload_factory
 from utilities.api_inventory import inventory_updated_payload_factory
 
@@ -50,6 +48,11 @@ def step_impl(context):
     assert context.payload["deposit_id"] == response_data["deposit_id"]
     assert context.payload["item_count"] == response_data["item_count"]
 
+    # Delete the new item, to keep the database clean
+    requests.delete(context.site_url + 'inventories/' + str(response_data["id"]) + '.json')
+    requests.delete(context.site_url + 'deposits/' + str(context.deposit_id) + '.json')
+    requests.delete(context.site_url + 'items/' + str(context.item_id) + '.json')
+
 
 @given(u'there is an existing inventory')
 def step_impl(context):
@@ -86,7 +89,9 @@ def step_impl(context):
     assert context.inventory_id == response_data["id"]
 
     # Delete the new item, to keep the database clean
-    requests.delete(context.site_url + 'inventories/' + str(context.inventory_id) + '.json')
+    requests.delete(context.site_url + 'inventories/' + str(response_data["id"]) + '.json')
+    requests.delete(context.site_url + 'deposits/' + str(context.deposit_id) + '.json')
+    requests.delete(context.site_url + 'items/' + str(context.item_id) + '.json')
 
 
 @given(u'there is an nonexistent inventory')
@@ -97,7 +102,9 @@ def step_impl(context):
 @given(u'have a updated inventory data')
 def step_impl(context):
     # Create a updated inventory data
-    context.updated_payload = inventory_updated_payload_factory(context.item_id, context.deposit_id, context.inventory_id)
+    context.updated_payload = inventory_updated_payload_factory(
+        context.item_id, context.deposit_id, context.inventory_id
+    )
 
 
 @when(u'a PUT request is sent to "/inventories/id.json" with the updated data')
@@ -117,6 +124,8 @@ def step_impl(context):
 
     # Delete the new item, to keep the database clean
     requests.delete(context.site_url + 'inventories/' + str(context.inventory_id) + '.json')
+    requests.delete(context.site_url + 'deposits/' + str(context.deposit_id) + '.json')
+    requests.delete(context.site_url + 'items/' + str(context.item_id) + '.json')
 
 
 @when(u'a PATCH request is sent to "/inventories/id.json" with the updated data')
@@ -138,4 +147,6 @@ def step_impl(context):
     response = requests.get(context.site_url + 'inventories/' + str(context.inventory_id) + '.json')
     assert response.status_code == 404
 
-
+    # Delete the new item, to keep the database clean
+    requests.delete(context.site_url + 'deposits/' + str(context.deposit_id) + '.json')
+    requests.delete(context.site_url + 'items/' + str(context.item_id) + '.json')
