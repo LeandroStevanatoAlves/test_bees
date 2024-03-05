@@ -38,18 +38,6 @@ def step_impl(context):
     assert context.payload["city"] == response_data["city"]
     assert context.payload["state"] == response_data["state"]
     assert context.payload["zipcode"] == response_data["zipcode"]
-    # {
-    #     "id": 121,
-    #     "name": "string",
-    #     "address": "string",
-    #     "city": "string",
-    #     "state": "string",
-    #     "zipcode": "string",
-    #     "created_at": "2024-03-04T03:43:56.632Z",
-    #     "updated_at": "2024-03-04T03:43:56.632Z",
-    #     "items": [],
-    #     "url": "https://test-bees.herokuapp.com/deposits/121.json"
-    # }
 
 
 @given(u'there is an existing deposit')
@@ -61,13 +49,17 @@ def step_impl(context):
     # Get the new deposit ID
     context.deposit_id = response_data["id"]
 
+@given(u'there is an nonexistent deposit')
+def step_impl(context):
+    context.deposit_id = 999999
+
 
 @when(u'a GET request is sent to "/deposits/id.json"')
 def step_impl(context):
     context.response = requests.get(context.site_url + 'deposits/' + str(context.deposit_id) + '.json')
 
 
-@then(u'the response should contain details of the deposit')
+@then(u'the response should contain deposit details')
 def step_impl(context):
     response_data = context.response.json()
     assert context.deposit_id == response_data["id"]
@@ -111,6 +103,13 @@ def step_impl(context):
     requests.delete(context.site_url + 'deposits/' + str(context.deposit_id) + '.json')
 
 
+@then(u'the response should contain details of the error 404')
+def step_impl(context):
+    response_data = context.response.json()
+    assert response_data["status"] == 404
+    assert response_data["error"] == "Not Found"
+
+
 @when(u'a DELETE request is sent to "/deposits/id.json"')
 def step_impl(context):
     context.response = requests.delete(context.site_url + 'deposits/' + str(context.deposit_id) + '.json')
@@ -118,5 +117,6 @@ def step_impl(context):
 
 @then(u'the deposit should be successfully deleted')
 def step_impl(context):
-    #raise NotImplementedError(u'STEP: Then the deposit should be successfully deleted')
-    print("AAAAAAAA")
+    # Try to get the deposit and expect to receive an error 404
+    response = requests.get(context.site_url + 'deposits/' + str(context.deposit_id) + '.json')
+    assert response.status_code == 404

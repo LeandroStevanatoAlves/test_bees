@@ -18,7 +18,14 @@ Feature: Endpoint /deposits
     Given there is an existing deposit
     When a GET request is sent to "/deposits/id.json"
     Then the response status code should be 200
-    And the response should contain details of the deposit
+    And the response should contain deposit details
+
+  @api
+  Scenario: Error When Try to Show Details of a Deposit That doesn't exist
+    Given there is an nonexistent deposit
+    When a GET request is sent to "/deposits/id.json"
+    Then the response status code should be 404
+    And the response should contain details of the error 404
 
   @api
   Scenario: Update Deposit (Using PUT)
